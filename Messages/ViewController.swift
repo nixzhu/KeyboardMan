@@ -38,8 +38,9 @@ class ViewController: UIViewController {
 
             if let strongSelf = self {
 
-                let animationDuration = keyboardInfo.animationDuration
-                let animationCurve = keyboardInfo.animationCurve
+                let duration = keyboardInfo.animationDuration
+                let curve = keyboardInfo.animationCurve
+                let options = UIViewAnimationOptions(curve << 16 | UIViewAnimationOptions.BeginFromCurrentState.rawValue)
 
                 switch keyboardInfo.action {
 
@@ -47,7 +48,7 @@ class ViewController: UIViewController {
 
                     print("show \(keyboardInfo.height), \(keyboardInfo.heightIncrement)\n")
 
-                    UIView.animateWithDuration(animationDuration, delay: 0, options: UIViewAnimationOptions(animationCurve << 16), animations: {
+                    UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
 
                         strongSelf.tableView.contentOffset.y += keyboardInfo.heightIncrement
                         strongSelf.tableView.contentInset.bottom = keyboardInfo.height + strongSelf.toolBar.frame.height
@@ -61,9 +62,9 @@ class ViewController: UIViewController {
 
                     print("hide \(keyboardInfo.height), \(keyboardInfo.heightIncrement)\n")
 
-                    UIView.animateWithDuration(animationDuration, delay: 0, options: UIViewAnimationOptions(animationCurve << 16), animations: {
+                    UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
 
-                        strongSelf.tableView.contentOffset.y -= keyboardInfo.height - keyboardInfo.heightIncrement
+                        strongSelf.tableView.contentOffset.y -= keyboardInfo.height
                         strongSelf.tableView.contentInset.bottom = strongSelf.toolBar.frame.height
 
                         strongSelf.toolBarBottomConstraint.constant = 0
