@@ -136,11 +136,11 @@ class ViewController: UIViewController {
 
         if hiddenHeight + newMessageHeight > 0 {
 
-            let adjustHeight = hiddenHeight > 0 ? newMessageHeight : hiddenHeight + newMessageHeight
-            print("adjustHeight: \(adjustHeight)\n\n")
+            let contentOffsetYIncrement = hiddenHeight > 0 ? newMessageHeight : hiddenHeight + newMessageHeight
+            print("contentOffsetYIncrement: \(contentOffsetYIncrement)\n")
 
             UIView.animateWithDuration(0.2) {
-                self.tableView.contentOffset.y += adjustHeight
+                self.tableView.contentOffset.y += contentOffsetYIncrement
             }
         }
 
