@@ -12,12 +12,10 @@ public class KeyboardMan: NSObject {
 
     var keyboardObserver: NSNotificationCenter? {
         didSet {
-            oldValue?.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-            oldValue?.removeObserver(self, name: UIKeyboardDidChangeFrameNotification, object: nil)
-            oldValue?.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+            oldValue?.removeObserver(self)
 
             keyboardObserver?.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-            keyboardObserver?.addObserver(self, selector: "keyboardDidChangeFrame:", name: UIKeyboardDidChangeFrameNotification, object: nil)
+            keyboardObserver?.addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
             keyboardObserver?.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         }
     }
@@ -93,7 +91,7 @@ public class KeyboardMan: NSObject {
         handleKeyboard(notification, .Show)
     }
     
-    func keyboardDidChangeFrame(notification: NSNotification) {
+    func keyboardWillChangeFrame(notification: NSNotification) {
 
         if let _ = keyboardInfo {
             handleKeyboard(notification, .Show)
