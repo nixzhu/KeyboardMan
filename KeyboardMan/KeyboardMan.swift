@@ -17,6 +17,7 @@ public class KeyboardMan: NSObject {
             keyboardObserver?.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
             keyboardObserver?.addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
             keyboardObserver?.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+            keyboardObserver?.addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
         }
     }
 
@@ -104,7 +105,13 @@ public class KeyboardMan: NSObject {
     
     func keyboardWillChangeFrame(notification: NSNotification) {
 
-        if let _ = keyboardInfo {
+        if let keyboardInfo = keyboardInfo {
+
+            if keyboardInfo.action == .Show {
+                handleKeyboard(notification, .Show)
+            }
+
+        } else {
             handleKeyboard(notification, .Show)
         }
     }
@@ -112,10 +119,12 @@ public class KeyboardMan: NSObject {
     func keyboardWillHide(notification: NSNotification) {
 
         handleKeyboard(notification, .Hide)
+    }
 
-        // make sure `keyboardDidChangeFrame:` not work when hide
+    func keyboardDidHide(notification: NSNotification) {
 
         keyboardInfo = nil
     }
+
 }
 
