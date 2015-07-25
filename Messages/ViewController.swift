@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         tableView.rowHeight = 60
         tableView.contentInset.bottom = toolBar.frame.height
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.tableFooterView = UIView()
 
         keyboardMan.keyboardObserveEnabled = true
         keyboardMan.postKeyboardInfo = { [weak self] keyboardInfo in
@@ -77,7 +78,7 @@ class ViewController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction func sendMessage() {
+    func sendMessage(textField: UITextField) {
 
         let text = textField.text
 
@@ -118,6 +119,15 @@ class ViewController: UIViewController {
         textField.text = ""
     }
 
+}
+
+extension ViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        sendMessage(textField)
+
+        return true
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
