@@ -40,8 +40,6 @@ class ViewController: UIViewController {
 
     let keyboardMan = KeyboardMan()
 
-    var tableViewContentOffsetBeforeKeyboardShow = CGPointZero
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,10 +52,6 @@ class ViewController: UIViewController {
         keyboardMan.keyboardObserveEnabled = true
 
         keyboardMan.updatedKeyboardInfo = { [weak self] keyboardInfo in
-
-            if let strongSelf = self {
-                strongSelf.tableViewContentOffsetBeforeKeyboardShow = strongSelf.tableView.contentOffset
-            }
 
             print(keyboardInfo.height)
             print(", ")
@@ -142,22 +136,6 @@ class ViewController: UIViewController {
                 self.tableView.contentOffset.y += adjustHeight
             }
         }
-//
-//        if hiddenHeight < blockedHeight {
-//            if hiddenHeight > 0 {
-//                let contentOffset = CGPoint(x: tableViewContentOffsetBeforeKeyboardShow.x, y: tableViewContentOffsetBeforeKeyboardShow.y + hiddenHeight)
-//                UIView.animateWithDuration(0.2) {
-//                    self.tableView.contentOffset = contentOffset
-//                }
-//            }
-//
-//        } else {
-//            //var contentOffset = tableViewContentOffsetBeforeKeyboardShow
-//            //contentOffset.y += newMessageHeight
-//            UIView.animateWithDuration(0.2) {
-//                self.tableView.contentOffset.y += newMessageHeight
-//            }
-//        }
 
         // clear text
 
