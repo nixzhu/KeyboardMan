@@ -34,7 +34,6 @@ class ViewController: UIViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.tableFooterView = UIView()
 
-        keyboardMan.keyboardObserveEnabled = true
         keyboardMan.postKeyboardInfo = { [weak self] keyboardInfo in
 
             if let strongSelf = self {
@@ -121,14 +120,19 @@ class ViewController: UIViewController {
 
 }
 
+// MARK: - UITextFieldDelegate
+
 extension ViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+
         sendMessage(textField)
 
         return true
     }
 }
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
 

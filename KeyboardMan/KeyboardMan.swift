@@ -59,7 +59,11 @@ public class KeyboardMan: NSObject {
         }
     }
 
-    public var postKeyboardInfo: (KeyboardInfo -> Void)?
+    public var postKeyboardInfo: (KeyboardInfo -> Void)? {
+        didSet {
+            keyboardObserveEnabled = true
+        }
+    }
 
     // MARK: - Actions
 
