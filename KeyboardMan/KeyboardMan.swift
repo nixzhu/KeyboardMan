@@ -38,7 +38,8 @@ public class KeyboardMan: NSObject {
         public let animationDuration: NSTimeInterval
         public let animationCurve: UInt
 
-        let frameEnd: CGRect
+        public let frameBegin: CGRect
+        public let frameEnd: CGRect
         public var height: CGFloat {
             return frameEnd.height
         }
@@ -57,7 +58,7 @@ public class KeyboardMan: NSObject {
             if let info = newValue {
                 if !info.isSameAction || info.heightIncrement > 0 {
 
-                    postKeyboardInfo?(info)
+                    // do convenient animation
 
                     let duration = info.animationDuration
                     let curve = info.animationCurve
@@ -75,6 +76,10 @@ public class KeyboardMan: NSObject {
                         }
 
                     }, completion: nil)
+
+                    // post full info
+
+                    postKeyboardInfo?(info)
                 }
             }
         }
@@ -106,6 +111,7 @@ public class KeyboardMan: NSObject {
 
             let animationDuration: NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
             let animationCurve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedLongValue
+            let frameBegin = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
             let frameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
 
             let currentHeight = frameEnd.height
@@ -122,6 +128,7 @@ public class KeyboardMan: NSObject {
             keyboardInfo = KeyboardInfo(
                 animationDuration: animationDuration,
                 animationCurve: animationCurve,
+                frameBegin: frameBegin,
                 frameEnd: frameEnd,
                 heightIncrement: heightIncrement,
                 action: action,
