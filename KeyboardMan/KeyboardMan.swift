@@ -164,6 +164,5 @@ public class KeyboardMan: NSObject {
 
         keyboardInfo = nil
     }
-
 }
 
