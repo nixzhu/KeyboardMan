@@ -23,7 +23,9 @@ public class KeyboardMan: NSObject {
 
     public var keyboardObserveEnabled = false {
         willSet {
-            keyboardObserver = newValue ? NSNotificationCenter.defaultCenter() : nil
+            if newValue != keyboardObserveEnabled {
+                keyboardObserver = newValue ? NSNotificationCenter.defaultCenter() : nil
+            }
         }
     }
 
@@ -54,9 +56,39 @@ public class KeyboardMan: NSObject {
         willSet {
             if let info = newValue {
                 if !info.isSameAction || info.heightIncrement > 0 {
+
                     postKeyboardInfo?(info)
+
+                    let duration = info.animationDuration
+                    let curve = info.animationCurve
+                    let options = UIViewAnimationOptions(curve << 16 | UIViewAnimationOptions.BeginFromCurrentState.rawValue)
+
+                    UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
+
+                        switch info.action {
+
+                        case .Show:
+                            self.animateWhenKeyboardAppear?(info.height, info.heightIncrement)
+
+                        case .Hide:
+                            self.animateWhenKeyboardDisappear?(info.height)
+                        }
+
+                    }, completion: nil)
                 }
             }
+        }
+    }
+
+    public var animateWhenKeyboardAppear: ((CGFloat, CGFloat) -> Void)? {
+        didSet {
+            keyboardObserveEnabled = true
+        }
+    }
+
+    public var animateWhenKeyboardDisappear: ((CGFloat) -> Void)? {
+        didSet {
+            keyboardObserveEnabled = true
         }
     }
 

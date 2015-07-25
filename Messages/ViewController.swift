@@ -34,6 +34,35 @@ class ViewController: UIViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.tableFooterView = UIView()
 
+        keyboardMan.animateWhenKeyboardAppear = { [weak self] keyboardHeight, keyboardHeighIncrement in
+
+            print("appear \(keyboardHeight), \(keyboardHeighIncrement)\n")
+
+            if let strongSelf = self {
+
+                strongSelf.tableView.contentOffset.y += keyboardHeighIncrement
+                strongSelf.tableView.contentInset.bottom = keyboardHeight + strongSelf.toolBar.frame.height
+
+                strongSelf.toolBarBottomConstraint.constant = keyboardHeight
+                strongSelf.view.layoutIfNeeded()
+            }
+        }
+
+        keyboardMan.animateWhenKeyboardDisappear = { [weak self] keyboardHeight in
+
+            print("disappear \(keyboardHeight)\n")
+
+            if let strongSelf = self {
+
+                strongSelf.tableView.contentOffset.y -= keyboardHeight
+                strongSelf.tableView.contentInset.bottom = strongSelf.toolBar.frame.height
+
+                strongSelf.toolBarBottomConstraint.constant = 0
+                strongSelf.view.layoutIfNeeded()
+            }
+        }
+
+        /*
         keyboardMan.postKeyboardInfo = { [weak self] keyboardInfo in
 
             if let strongSelf = self {
@@ -74,6 +103,7 @@ class ViewController: UIViewController {
                 }
             }
         }
+        */
     }
 
     // MARK: - Actions
