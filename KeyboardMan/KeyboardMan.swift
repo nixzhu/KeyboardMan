@@ -48,12 +48,15 @@ public class KeyboardMan: NSObject {
             case Hide
         }
         public let action: Action
+        let isSameAction: Bool
     }
 
     var keyboardInfo: KeyboardInfo? {
         willSet {
             if let info = newValue {
-                updatedKeyboardInfo?(info)
+                if !info.isSameAction || info.heightIncrement > 0 {
+                    updatedKeyboardInfo?(info)
+                }
             }
         }
     }
@@ -74,7 +77,14 @@ public class KeyboardMan: NSObject {
             let previousHeight = keyboardInfo?.height ?? 0
             let heightIncrement = currentHeight - previousHeight
 
-            keyboardInfo = KeyboardInfo(animationDuration: animationDuration, animationCurve: animationCurve, frameEnd: frameEnd, heightIncrement: heightIncrement, action: action)
+            let isSameAction: Bool
+            if let previousAction = keyboardInfo?.action {
+                isSameAction = action == previousAction
+            } else {
+                isSameAction = false
+            }
+
+            keyboardInfo = KeyboardInfo(animationDuration: animationDuration, animationCurve: animationCurve, frameEnd: frameEnd, heightIncrement: heightIncrement, action: action, isSameAction: isSameAction)
         }
     }
 
