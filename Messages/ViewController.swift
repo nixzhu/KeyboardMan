@@ -12,31 +12,35 @@ import KeyboardMan
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var textField: UITextField!
 
+    @IBOutlet weak var toolBar: UIView!
     @IBOutlet weak var toolBarBottomConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var textField: UITextField!
 
     var messages: [String] = [
         "Hello world!",
         "How do you do?",
         "I'm fine, thank you! And you?",
-        "Hello world!",
-        "How do you do?",
-        "I'm fine, thank you! And you?",
-        "Hello world!",
-        "How do you do?",
-        "I'm fine, thank you! And you?",
-        "Hello world!",
-        "How do you do?",
-        "I'm fine, thank you! And you?",
-        "Hello world!",
-        "How do you do?",
-        "I'm fine, thank you! And you?",
+//        "Hello world!",
+//        "How do you do?",
+//        "I'm fine, thank you! And you?",
+//        "Hello world!",
+//        "How do you do?",
+//        "I'm fine, thank you! And you?",
+//        "Hello world!",
+//        "How do you do?",
+//        "I'm fine, thank you! And you?",
+//        "Hello world!",
+//        "How do you do?",
+//        "I'm fine, thank you! And you?",
     ]
 
     let cellID = "cell"
 
     let keyboardMan = KeyboardMan()
+
+    var tableViewContentOffsetBeforeKeyboardShow = CGPointZero
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +54,10 @@ class ViewController: UIViewController {
         keyboardMan.keyboardObserveEnabled = true
 
         keyboardMan.updatedKeyboardInfo = { [weak self] keyboardInfo in
+
+            if let strongSelf = self {
+                strongSelf.tableViewContentOffsetBeforeKeyboardShow = strongSelf.tableView.contentOffset
+            }
 
             print(keyboardInfo.height)
             print(", ")
@@ -119,9 +127,37 @@ class ViewController: UIViewController {
 
         // scroll up a little bit
 
-        UIView.animateWithDuration(0.2) {
-            self.tableView.contentOffset.y += 44
+        let newMessageHeight: CGFloat = 44
+
+        let blockedHeight = 64 + toolBar.frame.height + toolBarBottomConstraint.constant
+        let visibleHeight = tableView.frame.height - blockedHeight
+        let hiddenHeight = tableView.contentSize.height - visibleHeight
+
+        if hiddenHeight + newMessageHeight > 0 {
+
+            let adjustHeight = hiddenHeight > 0 ? newMessageHeight : hiddenHeight + newMessageHeight
+            print("adjustHeight: \(adjustHeight)\n\n")
+
+            UIView.animateWithDuration(0.2) {
+                self.tableView.contentOffset.y += adjustHeight
+            }
         }
+//
+//        if hiddenHeight < blockedHeight {
+//            if hiddenHeight > 0 {
+//                let contentOffset = CGPoint(x: tableViewContentOffsetBeforeKeyboardShow.x, y: tableViewContentOffsetBeforeKeyboardShow.y + hiddenHeight)
+//                UIView.animateWithDuration(0.2) {
+//                    self.tableView.contentOffset = contentOffset
+//                }
+//            }
+//
+//        } else {
+//            //var contentOffset = tableViewContentOffsetBeforeKeyboardShow
+//            //contentOffset.y += newMessageHeight
+//            UIView.animateWithDuration(0.2) {
+//                self.tableView.contentOffset.y += newMessageHeight
+//            }
+//        }
 
         // clear text
 

@@ -73,6 +73,7 @@
                     <connections>
                         <outlet property="tableView" destination="vsm-Rg-nVs" id="O8a-yi-hUe"/>
                         <outlet property="textField" destination="Z0b-pE-cJc" id="E3d-hL-w8s"/>
+                        <outlet property="toolBar" destination="hh1-pV-Yht" id="gb7-XW-rcZ"/>
                         <outlet property="toolBarBottomConstraint" destination="mUz-OG-RTf" id="kP2-FO-VxA"/>
                     </connections>
                 </viewController>

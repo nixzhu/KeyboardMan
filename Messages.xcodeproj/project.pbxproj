@@ -715,6 +715,7 @@
 				50FA9A3B1B63AF69009BF2A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50FA9A401B63AF69009BF2A0 /* Build configuration list for PBXNativeTarget "KeyboardManTests" */ = {
 			isa = XCConfigurationList;
@@ -723,6 +724,7 @@
 				50FA9A3D1B63AF69009BF2A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
