@@ -53,13 +53,13 @@ public class KeyboardMan: NSObject {
         willSet {
             if let info = newValue {
                 if !info.isSameAction || info.heightIncrement > 0 {
-                    updatedKeyboardInfo?(info)
+                    postKeyboardInfo?(info)
                 }
             }
         }
     }
 
-    public var updatedKeyboardInfo: (KeyboardInfo -> Void)?
+    public var postKeyboardInfo: (KeyboardInfo -> Void)?
 
     // MARK: - Actions
 
@@ -82,7 +82,14 @@ public class KeyboardMan: NSObject {
                 isSameAction = false
             }
 
-            keyboardInfo = KeyboardInfo(animationDuration: animationDuration, animationCurve: animationCurve, frameEnd: frameEnd, heightIncrement: heightIncrement, action: action, isSameAction: isSameAction)
+            keyboardInfo = KeyboardInfo(
+                animationDuration: animationDuration,
+                animationCurve: animationCurve,
+                frameEnd: frameEnd,
+                heightIncrement: heightIncrement,
+                action: action,
+                isSameAction: isSameAction
+            )
         }
     }
 

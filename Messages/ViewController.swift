@@ -19,21 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
 
     var messages: [String] = [
-        "Hello world!",
         "How do you do?",
-        "I'm fine, thank you! And you?",
-//        "Hello world!",
-//        "How do you do?",
-//        "I'm fine, thank you! And you?",
-//        "Hello world!",
-//        "How do you do?",
-//        "I'm fine, thank you! And you?",
-//        "Hello world!",
-//        "How do you do?",
-//        "I'm fine, thank you! And you?",
-//        "Hello world!",
-//        "How do you do?",
-//        "I'm fine, thank you! And you?",
     ]
 
     let cellID = "cell"
@@ -43,58 +29,48 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.rowHeight = 60
+        tableView.contentInset.bottom = toolBar.frame.height
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellID)
 
-        var contentInset = tableView.contentInset
-        contentInset.bottom = 60
-        tableView.contentInset = contentInset
-
         keyboardMan.keyboardObserveEnabled = true
+        keyboardMan.postKeyboardInfo = { [weak self] keyboardInfo in
 
-        keyboardMan.updatedKeyboardInfo = { [weak self] keyboardInfo in
+            if let strongSelf = self {
 
-            print(keyboardInfo.height)
-            print(", ")
-            print(keyboardInfo.heightIncrement)
-            print("\n")
-            print(self?.tableView.contentOffset.y)
-            print("\n")
-            print("\n")
+                let animationDuration = keyboardInfo.animationDuration
+                let animationCurve = keyboardInfo.animationCurve
 
-            let animationDuration = keyboardInfo.animationDuration
-            let animationCurve = keyboardInfo.animationCurve
+                switch keyboardInfo.action {
 
-            switch keyboardInfo.action {
+                case .Show:
 
-            case .Show:
+                    print("show \(keyboardInfo.height), \(keyboardInfo.heightIncrement)\n")
 
-                print("show\n\n\n")
+                    UIView.animateWithDuration(animationDuration, delay: 0, options: UIViewAnimationOptions(animationCurve << 16), animations: {
 
-                UIView.animateWithDuration(animationDuration, delay: 0, options: UIViewAnimationOptions(animationCurve << 16), animations: {
+                        strongSelf.tableView.contentOffset.y += keyboardInfo.heightIncrement
+                        strongSelf.tableView.contentInset.bottom = keyboardInfo.height + strongSelf.toolBar.frame.height
 
-                    self?.tableView.contentOffset.y += keyboardInfo.heightIncrement
-                    self?.tableView.contentInset.bottom = keyboardInfo.height + 60
+                        strongSelf.toolBarBottomConstraint.constant = keyboardInfo.height
+                        strongSelf.view.layoutIfNeeded()
 
-                    self?.toolBarBottomConstraint.constant = keyboardInfo.height
-                    self?.view.layoutIfNeeded()
+                    }, completion: nil)
 
-                }, completion: { _ in
-                })
+                case .Hide:
 
-            case .Hide:
+                    print("hide \(keyboardInfo.height), \(keyboardInfo.heightIncrement)\n")
 
-                print("hide\n\n\n")
+                    UIView.animateWithDuration(animationDuration, delay: 0, options: UIViewAnimationOptions(animationCurve << 16), animations: {
 
-                UIView.animateWithDuration(animationDuration, delay: 0, options: UIViewAnimationOptions(animationCurve << 16), animations: {
+                        strongSelf.tableView.contentOffset.y -= keyboardInfo.height - keyboardInfo.heightIncrement
+                        strongSelf.tableView.contentInset.bottom = strongSelf.toolBar.frame.height
 
-                    self?.tableView.contentOffset.y -= keyboardInfo.height - keyboardInfo.heightIncrement
-                    self?.tableView.contentInset.bottom = 60
+                        strongSelf.toolBarBottomConstraint.constant = 0
+                        strongSelf.view.layoutIfNeeded()
 
-                    self?.toolBarBottomConstraint.constant = 0
-                    self?.view.layoutIfNeeded()
-
-                }, completion: { _ in
-                })
+                    }, completion: nil)
+                }
             }
         }
     }
@@ -119,9 +95,9 @@ class ViewController: UIViewController {
         let indexPath = NSIndexPath(forRow: messages.count - 1, inSection: 0)
         tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 
-        // scroll up a little bit
+        // scroll up a little bit if need
 
-        let newMessageHeight: CGFloat = 44
+        let newMessageHeight: CGFloat = tableView.rowHeight
 
         let blockedHeight = 64 + toolBar.frame.height + toolBarBottomConstraint.constant
         let visibleHeight = tableView.frame.height - blockedHeight
@@ -147,21 +123,27 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+
         return 1
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return messages.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! UITableViewCell
+
         let message = messages[indexPath.row]
-        cell.textLabel?.text = "\(indexPath.row) " + message
+        cell.textLabel?.text = "\(indexPath.row + 1): " + message
+
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         textField.resignFirstResponder()
