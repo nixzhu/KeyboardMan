@@ -34,13 +34,13 @@ class ViewController: UIViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.tableFooterView = UIView()
 
-        keyboardMan.animateWhenKeyboardAppear = { [weak self] keyboardHeight, keyboardHeighIncrement in
+        keyboardMan.animateWhenKeyboardAppear = { [weak self] keyboardHeight, keyboardHeightIncrement in
 
-            print("appear \(keyboardHeight), \(keyboardHeighIncrement)\n")
+            print("appear \(keyboardHeight), \(keyboardHeightIncrement)\n")
 
             if let strongSelf = self {
 
-                strongSelf.tableView.contentOffset.y += keyboardHeighIncrement
+                strongSelf.tableView.contentOffset.y += keyboardHeightIncrement
                 strongSelf.tableView.contentInset.bottom = keyboardHeight + strongSelf.toolBar.frame.height
 
                 strongSelf.toolBarBottomConstraint.constant = keyboardHeight
@@ -130,7 +130,7 @@ class ViewController: UIViewController {
 
         let newMessageHeight: CGFloat = tableView.rowHeight
 
-        let blockedHeight = 64 + toolBar.frame.height + toolBarBottomConstraint.constant
+        let blockedHeight = statusBarHeight + navigationBarHeight + toolBar.frame.height + toolBarBottomConstraint.constant
         let visibleHeight = tableView.frame.height - blockedHeight
         let hiddenHeight = tableView.contentSize.height - visibleHeight
 
@@ -149,6 +149,32 @@ class ViewController: UIViewController {
         textField.text = ""
     }
 
+}
+
+// MARK: - Bar heights
+
+extension UIViewController {
+
+    var statusBarHeight: CGFloat {
+
+        if let window = view.window {
+            let statusBarFrame = window.convertRect(UIApplication.sharedApplication().statusBarFrame, toView: view)
+            return statusBarFrame.height
+
+        } else {
+            return 0
+        }
+    }
+
+    var navigationBarHeight: CGFloat {
+
+        if let navigationController = navigationController {
+            return navigationController.navigationBar.frame.height
+
+        } else {
+            return 0
+        }
+    }
 }
 
 // MARK: - UITextFieldDelegate
