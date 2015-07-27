@@ -22,9 +22,11 @@ import KeyboardMan
 Do animation with keyboard appear/disappear:
 
 ```swift
+let keyboardMan = KeyboardMan()
+
 keyboardMan.animateWhenKeyboardAppear = { [weak self] appearPostIndex, keyboardHeight, keyboardHeightIncrement in
 
-    print("appear \(keyboardHeight), \(keyboardHeightIncrement)\n")
+    print("appear \(appearPostIndex), \(keyboardHeight), \(keyboardHeightIncrement)\n")
 
     if let strongSelf = self {
 
