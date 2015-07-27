@@ -75,7 +75,7 @@ class ViewController: UIViewController {
 
                 case .Show:
 
-                    print("show \(keyboardInfo.height), \(keyboardInfo.heightIncrement)\n")
+                    print("show \(keyboardMan.appearPostIndex), \(keyboardInfo.height), \(keyboardInfo.heightIncrement)\n")
 
                     UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
 
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
 
                 case .Hide:
 
-                    print("hide \(keyboardInfo.height), \(keyboardInfo.heightIncrement)\n")
+                    print("hide \(keyboardInfo.height)\n")
 
                     UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
 
