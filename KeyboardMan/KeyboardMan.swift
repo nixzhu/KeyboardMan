@@ -71,12 +71,12 @@ public class KeyboardMan: NSObject {
                         switch info.action {
 
                         case .Show:
-                            self.animateWhenKeyboardAppear?(self.appearPostIndex, info.height, info.heightIncrement)
+                            self.animateWhenKeyboardAppear?(appearPostIndex: self.appearPostIndex, keyboardHeight: info.height, keyboardHeightIncrement: info.heightIncrement)
 
                             self.appearPostIndex++
 
                         case .Hide:
-                            self.animateWhenKeyboardDisappear?(info.height)
+                            self.animateWhenKeyboardDisappear?(keyboardHeight: info.height)
 
                             self.appearPostIndex = 0
                         }
@@ -85,25 +85,25 @@ public class KeyboardMan: NSObject {
 
                     // post full info
 
-                    postKeyboardInfo?(self, info)
+                    postKeyboardInfo?(keyboardMan: self, keyboardInfo: info)
                 }
             }
         }
     }
 
-    public var animateWhenKeyboardAppear: ((Int, CGFloat, CGFloat) -> Void)? {
+    public var animateWhenKeyboardAppear: ((appearPostIndex: Int, keyboardHeight: CGFloat, keyboardHeightIncrement: CGFloat) -> Void)? {
         didSet {
             keyboardObserveEnabled = true
         }
     }
 
-    public var animateWhenKeyboardDisappear: ((CGFloat) -> Void)? {
+    public var animateWhenKeyboardDisappear: ((keyboardHeight: CGFloat) -> Void)? {
         didSet {
             keyboardObserveEnabled = true
         }
     }
 
-    public var postKeyboardInfo: ((KeyboardMan, KeyboardInfo) -> Void)? {
+    public var postKeyboardInfo: ((keyboardMan: KeyboardMan, keyboardInfo: KeyboardInfo) -> Void)? {
         didSet {
             keyboardObserveEnabled = true
         }
