@@ -36,7 +36,7 @@ class ViewController: UIViewController {
 
         keyboardMan.animateWhenKeyboardAppear = { [weak self] appearPostIndex, keyboardHeight, keyboardHeightIncrement in
 
-            print("appear \(keyboardHeight), \(keyboardHeightIncrement)\n")
+            print("appear \(appearPostIndex), \(keyboardHeight), \(keyboardHeightIncrement)\n")
 
             if let strongSelf = self {
 
