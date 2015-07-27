@@ -63,6 +63,8 @@ keyboardMan.postKeyboardInfo = { [weak self] keyboardMan, keyboardInfo in
 
 Check the demo for more information.
 
+另有[中文介绍](https://github.com/nixzhu/dev-blog/blob/master/2015-07-27-keyboard-man.md)。
+
 ## Installation
 
 Feel free to drag `KeyboardMan.swift` to your iOS Project. But it's recommended to use CocoaPods or Carthage.
