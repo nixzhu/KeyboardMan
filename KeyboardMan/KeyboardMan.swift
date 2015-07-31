@@ -30,7 +30,8 @@ public class KeyboardMan: NSObject {
     }
 
     deinit {
-        keyboardObserveEnabled = false
+        // willSet and didSet are not called when deinit, so...
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     public struct KeyboardInfo {
