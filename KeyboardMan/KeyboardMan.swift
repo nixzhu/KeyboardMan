@@ -58,6 +58,10 @@ public class KeyboardMan: NSObject {
 
     var keyboardInfo: KeyboardInfo? {
         willSet {
+            if UIApplication.sharedApplication().applicationState != .Active {
+                return
+            }
+
             if let info = newValue {
                 if !info.isSameAction || info.heightIncrement > 0 {
 
