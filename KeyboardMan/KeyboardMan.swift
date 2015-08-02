@@ -34,7 +34,7 @@ public class KeyboardMan: NSObject {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    public class KeyboardInfo: NSObject {
+    public struct KeyboardInfo {
 
         public let animationDuration: NSTimeInterval
         public let animationCurve: UInt
@@ -46,32 +46,12 @@ public class KeyboardMan: NSObject {
         }
         public let heightIncrement: CGFloat
 
-        @objc public enum Action: Int {
+        public enum Action {
             case Show
             case Hide
         }
         public let action: Action
         let isSameAction: Bool
-
-        init(
-            animationDuration: NSTimeInterval,
-            animationCurve: UInt,
-            frameBegin: CGRect,
-            frameEnd: CGRect,
-            heightIncrement: CGFloat,
-            action: Action,
-            isSameAction: Bool) {
-
-                self.animationDuration = animationDuration
-                self.animationCurve = animationCurve
-                self.frameBegin = frameBegin
-                self.frameEnd = frameEnd
-                self.heightIncrement = heightIncrement
-                self.action = action
-                self.isSameAction = isSameAction
-
-                super.init()
-        }
     }
 
     public var appearPostIndex = 0
