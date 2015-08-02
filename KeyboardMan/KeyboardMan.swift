@@ -63,7 +63,7 @@ public class KeyboardMan: NSObject {
             }
 
             if let info = newValue {
-                if !info.isSameAction || info.heightIncrement > 0 {
+                if !info.isSameAction || info.heightIncrement != 0 {
 
                     // do convenient animation
 
