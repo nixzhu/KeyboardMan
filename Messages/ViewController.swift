@@ -62,9 +62,16 @@ class ViewController: UIViewController {
             }
         }
 
-        /*
         keyboardMan.postKeyboardInfo = { [weak self] keyboardMan, keyboardInfo in
 
+            switch keyboardInfo.action {
+            case .Show:
+                print("show \(keyboardMan.appearPostIndex), \(keyboardInfo.height), \(keyboardInfo.heightIncrement)\n")
+            case .Hide:
+                print("hide \(keyboardInfo.height)\n")
+            }
+
+            /*
             if let strongSelf = self {
 
                 let duration = keyboardInfo.animationDuration
@@ -102,8 +109,8 @@ class ViewController: UIViewController {
                     }, completion: nil)
                 }
             }
+            */
         }
-        */
     }
 
     // MARK: - Actions
