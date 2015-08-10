@@ -5,7 +5,7 @@
 
 # KeyboardMan
 
-We may need keyboard infomation from keyboard notification to do animation, but the approach is complicated and easy to make mistakes. 
+We may need keyboard infomation from keyboard notification to do animation. However, the approach is complicated and easy to make mistakes. 
 
 But KeyboardMan will make it simple & easy.
 
@@ -138,7 +138,9 @@ $(SRCROOT)/Carthage/Build/iOS/KeyboardMan.framework
 
 For more information about how to use Carthage, please see its [project page](https://github.com/Carthage/Carthage).
 
+## Contact
 
+NIX [@nixzhu](https://twitter.com/nixzhu)
 
 ## License
 

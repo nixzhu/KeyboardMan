@@ -5,8 +5,8 @@ Pod::Spec.new do |s|
   s.summary     = "KeyboardMan help you make keyboard animation."
 
   s.description = <<-DESC
-                   We may need keyboard infomation from keyboard notification to do animation,
-                   but the approach is complicated and easy to make mistakes.
+                   We may need keyboard infomation from keyboard notification to do animation.
+                   However, the approach is complicated and easy to make mistakes.
                    But KeyboardMan will make it simple & easy.
                    DESC
 
