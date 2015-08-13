@@ -160,9 +160,6 @@ public class KeyboardMan: NSObject {
             if keyboardInfo.action == .Show {
                 handleKeyboard(notification, .Show)
             }
-
-        } else {
-            handleKeyboard(notification, .Show)
         }
     }
 
