@@ -69,7 +69,7 @@ public class KeyboardMan: NSObject {
 
                     let duration = info.animationDuration
                     let curve = info.animationCurve
-                    let options = UIViewAnimationOptions(curve << 16 | UIViewAnimationOptions.BeginFromCurrentState.rawValue)
+                    let options = UIViewAnimationOptions(rawValue: curve << 16 | UIViewAnimationOptions.BeginFromCurrentState.rawValue)
 
                     UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
 

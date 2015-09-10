@@ -62,7 +62,7 @@ class ViewController: UIViewController {
             }
         }
 
-        keyboardMan.postKeyboardInfo = { [weak self] keyboardMan, keyboardInfo in
+        keyboardMan.postKeyboardInfo = { keyboardMan, keyboardInfo in
 
             switch keyboardInfo.action {
             case .Show:
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
 
                 let duration = keyboardInfo.animationDuration
                 let curve = keyboardInfo.animationCurve
-                let options = UIViewAnimationOptions(curve << 16 | UIViewAnimationOptions.BeginFromCurrentState.rawValue)
+                let options = UIViewAnimationOptions(rawValue: curve << 16 | UIViewAnimationOptions.BeginFromCurrentState.rawValue)
 
                 switch keyboardInfo.action {
 
@@ -117,15 +117,16 @@ class ViewController: UIViewController {
 
     func sendMessage(textField: UITextField) {
 
-        let text = textField.text
+        guard let message = textField.text else {
+            return
+        }
 
-        if text.isEmpty {
+        if message.isEmpty {
             return
         }
 
         // update data source
 
-        let message = text
         messages.append(message)
 
         // insert new row
@@ -212,7 +213,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID)!
 
         let message = messages[indexPath.row]
         cell.textLabel?.text = "\(indexPath.row + 1): " + message
