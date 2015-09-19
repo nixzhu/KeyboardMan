@@ -34,6 +34,23 @@ class ViewController: UIViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.tableFooterView = UIView()
 
+        keyboardMan.keyboardWillShow = {
+            print("keyboardWillShow")
+        }
+
+        keyboardMan.keyboardDidShow = {
+            print("keyboardDidShow")
+        }
+
+        keyboardMan.keyboardWillHide = {
+            
+            print("keyboardWillHide")
+        }
+        
+        keyboardMan.keyboardDidHide = {
+            print("keyboardDidHide")
+        }
+        
         keyboardMan.animateWhenKeyboardAppear = { [weak self] appearPostIndex, keyboardHeight, keyboardHeightIncrement in
 
             print("appear \(appearPostIndex), \(keyboardHeight), \(keyboardHeightIncrement)\n")

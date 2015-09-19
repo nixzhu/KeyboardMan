@@ -16,6 +16,7 @@ public class KeyboardMan: NSObject {
 
             keyboardObserver?.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
             keyboardObserver?.addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+            keyboardObserver?.addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
             keyboardObserver?.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
             keyboardObserver?.addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
         }
@@ -58,38 +59,38 @@ public class KeyboardMan: NSObject {
 
     var keyboardInfo: KeyboardInfo? {
         willSet {
-            if UIApplication.sharedApplication().applicationState != .Active {
+            guard UIApplication.sharedApplication().applicationState == .Active else {
                 return
             }
 
             if let info = newValue {
                 if !info.isSameAction || info.heightIncrement != 0 {
-
+                    
                     // do convenient animation
-
+                    
                     let duration = info.animationDuration
                     let curve = info.animationCurve
                     let options = UIViewAnimationOptions(rawValue: curve << 16 | UIViewAnimationOptions.BeginFromCurrentState.rawValue)
-
+                    
                     UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
-
+                        
                         switch info.action {
-
+                            
                         case .Show:
                             self.animateWhenKeyboardAppear?(appearPostIndex: self.appearPostIndex, keyboardHeight: info.height, keyboardHeightIncrement: info.heightIncrement)
-
+                            
                             self.appearPostIndex++
-
+                            
                         case .Hide:
                             self.animateWhenKeyboardDisappear?(keyboardHeight: info.height)
-
+                            
                             self.appearPostIndex = 0
                         }
-
-                    }, completion: nil)
-
+                        
+                        }, completion: nil)
+                    
                     // post full info
-
+                    
                     postKeyboardInfo?(keyboardMan: self, keyboardInfo: info)
                 }
             }
@@ -108,6 +109,31 @@ public class KeyboardMan: NSObject {
         }
     }
 
+    public var keyboardWillShow: (() -> Void)? {
+        didSet {
+            keyboardObserveEnabled = true
+        }
+    }
+
+    public var keyboardDidShow: (() -> Void)? {
+        didSet {
+            keyboardObserveEnabled = true
+        }
+    }
+
+    public var keyboardWillHide: (() -> Void)? {
+        didSet {
+            keyboardObserveEnabled = true
+        }
+    }
+
+    public var keyboardDidHide: (() -> Void)? {
+        didSet {
+            keyboardObserveEnabled = true
+        }
+    }
+
+    
     public var postKeyboardInfo: ((keyboardMan: KeyboardMan, keyboardInfo: KeyboardInfo) -> Void)? {
         didSet {
             keyboardObserveEnabled = true
@@ -150,6 +176,7 @@ public class KeyboardMan: NSObject {
 
     func keyboardWillShow(notification: NSNotification) {
 
+        keyboardWillShow?()
         handleKeyboard(notification, .Show)
     }
     
@@ -163,13 +190,20 @@ public class KeyboardMan: NSObject {
         }
     }
 
+    func keyboardDidShow(notification: NSNotification) {
+        
+        keyboardDidShow?()
+    }
+    
     func keyboardWillHide(notification: NSNotification) {
 
+        keyboardWillHide?()
         handleKeyboard(notification, .Hide)
     }
 
     func keyboardDidHide(notification: NSNotification) {
 
+        keyboardDidHide?()
         keyboardInfo = nil
     }
 }
