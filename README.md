@@ -88,7 +88,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'KeyboardMan', '~> 0.5.1'
+pod 'KeyboardMan', '~> 0.5.2'
 ```
 
 Then, run the following command:
@@ -113,7 +113,7 @@ $ brew install carthage
 To integrate KeyboardMan into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "nixzhu/KeyboardMan" >= 0.5.1
+github "nixzhu/KeyboardMan" >= 0.5.2
 ```
 
 Then, run the following command to build the KeyboardMan framework:
