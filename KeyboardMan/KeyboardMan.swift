@@ -58,7 +58,7 @@ public class KeyboardMan: NSObject {
 
     var keyboardInfo: KeyboardInfo? {
         willSet {
-            if UIApplication.sharedApplication().applicationState != .Active {
+            guard UIApplication.sharedApplication().applicationState != .Background else {
                 return
             }
 
@@ -150,7 +150,7 @@ public class KeyboardMan: NSObject {
 
     func keyboardWillShow(notification: NSNotification) {
 
-        if UIApplication.sharedApplication().applicationState != .Active {
+        guard UIApplication.sharedApplication().applicationState != .Background else {
             return
         }
 
@@ -159,7 +159,7 @@ public class KeyboardMan: NSObject {
     
     func keyboardWillChangeFrame(notification: NSNotification) {
 
-        if UIApplication.sharedApplication().applicationState != .Active {
+        guard UIApplication.sharedApplication().applicationState != .Background else {
             return
         }
 
@@ -173,7 +173,7 @@ public class KeyboardMan: NSObject {
 
     func keyboardWillHide(notification: NSNotification) {
 
-        if UIApplication.sharedApplication().applicationState != .Active {
+        guard UIApplication.sharedApplication().applicationState != .Background else {
             return
         }
 
@@ -182,7 +182,7 @@ public class KeyboardMan: NSObject {
 
     func keyboardDidHide(notification: NSNotification) {
 
-        if UIApplication.sharedApplication().applicationState != .Active {
+        guard UIApplication.sharedApplication().applicationState != .Background else {
             return
         }
 
