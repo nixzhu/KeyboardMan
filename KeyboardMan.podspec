@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name        = "KeyboardMan"
-  s.version     = "0.5.2"
+  s.version     = "0.6.0"
   s.summary     = "KeyboardMan help you make keyboard animation."
 
   s.description = <<-DESC
