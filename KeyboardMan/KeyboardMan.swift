@@ -14,10 +14,10 @@ public class KeyboardMan: NSObject {
         didSet {
             oldValue?.removeObserver(self)
 
-            keyboardObserver?.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-            keyboardObserver?.addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-            keyboardObserver?.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-            keyboardObserver?.addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+            keyboardObserver?.addObserver(self, selector: #selector(KeyboardMan.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+            keyboardObserver?.addObserver(self, selector: #selector(KeyboardMan.keyboardWillChangeFrame(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
+            keyboardObserver?.addObserver(self, selector: #selector(KeyboardMan.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+            keyboardObserver?.addObserver(self, selector: #selector(KeyboardMan.keyboardDidHide(_:)), name: UIKeyboardDidHideNotification, object: nil)
         }
     }
 
@@ -78,7 +78,7 @@ public class KeyboardMan: NSObject {
                         case .Show:
                             self.animateWhenKeyboardAppear?(appearPostIndex: self.appearPostIndex, keyboardHeight: info.height, keyboardHeightIncrement: info.heightIncrement)
 
-                            self.appearPostIndex++
+                            self.appearPostIndex += 1
 
                         case .Hide:
                             self.animateWhenKeyboardDisappear?(keyboardHeight: info.height)
