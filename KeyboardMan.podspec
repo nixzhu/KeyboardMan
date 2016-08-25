@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
 
   s.name        = "KeyboardMan"
-  s.version     = "0.6.0"
-  s.summary     = "KeyboardMan help you make keyboard animation."
+  s.version     = "0.6.1"
+  s.summary     = "KeyboardMan helps you make keyboard animation."
 
   s.description = <<-DESC
                    We may need keyboard infomation from keyboard notification to do animation.
@@ -18,7 +18,6 @@ Pod::Spec.new do |s|
   s.social_media_url  = "https://twitter.com/nixzhu"
 
   s.ios.deployment_target   = "8.0"
-  # s.osx.deployment_target = "10.7"
 
   s.source          = { :git => "https://github.com/nixzhu/KeyboardMan.git", :tag => s.version }
   s.source_files    = "KeyboardMan/*.swift"
