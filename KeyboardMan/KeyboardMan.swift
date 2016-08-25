@@ -56,7 +56,7 @@ public class KeyboardMan: NSObject {
 
     public var appearPostIndex = 0
 
-    var keyboardInfo: KeyboardInfo? {
+    public private(set) var keyboardInfo: KeyboardInfo? {
         willSet {
             guard UIApplication.sharedApplication().applicationState != .Background else {
                 return
