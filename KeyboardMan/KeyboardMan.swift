@@ -54,7 +54,7 @@ public class KeyboardMan: NSObject {
         let isSameAction: Bool
     }
 
-    public var appearPostIndex = 0
+    public private(set) var appearPostIndex = 0
 
     public private(set) var keyboardInfo: KeyboardInfo? {
         willSet {
