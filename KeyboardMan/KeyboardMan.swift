@@ -62,36 +62,40 @@ public class KeyboardMan: NSObject {
                 return
             }
 
-            if let info = newValue {
-                if !info.isSameAction || info.heightIncrement != 0 {
+            guard let info = newValue else {
+                return
+            }
 
-                    // do convenient animation
+            if !info.isSameAction || info.heightIncrement != 0 {
 
-                    let duration = info.animationDuration
-                    let curve = info.animationCurve
-                    let options = UIViewAnimationOptions(rawValue: curve << 16 | UIViewAnimationOptions.BeginFromCurrentState.rawValue)
+                // do convenient animation
 
-                    UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
+                let duration = info.animationDuration
+                let curve = info.animationCurve
+                let options = UIViewAnimationOptions(rawValue: curve << 16 | UIViewAnimationOptions.BeginFromCurrentState.rawValue)
 
-                        switch info.action {
+                UIView.animateWithDuration(duration, delay: 0, options: options, animations: { [weak self] in
 
-                        case .Show:
-                            self.animateWhenKeyboardAppear?(appearPostIndex: self.appearPostIndex, keyboardHeight: info.height, keyboardHeightIncrement: info.heightIncrement)
+                    guard let strongSelf = self else { return }
 
-                            self.appearPostIndex += 1
+                    switch info.action {
 
-                        case .Hide:
-                            self.animateWhenKeyboardDisappear?(keyboardHeight: info.height)
+                    case .Show:
+                        strongSelf.animateWhenKeyboardAppear?(appearPostIndex: strongSelf.appearPostIndex, keyboardHeight: info.height, keyboardHeightIncrement: info.heightIncrement)
 
-                            self.appearPostIndex = 0
-                        }
+                        strongSelf.appearPostIndex += 1
 
-                    }, completion: nil)
+                    case .Hide:
+                        strongSelf.animateWhenKeyboardDisappear?(keyboardHeight: info.height)
 
-                    // post full info
+                        strongSelf.appearPostIndex = 0
+                    }
 
-                    postKeyboardInfo?(keyboardMan: self, keyboardInfo: info)
-                }
+                }, completion: nil)
+
+                // post full info
+
+                postKeyboardInfo?(keyboardMan: self, keyboardInfo: info)
             }
         }
     }
@@ -118,34 +122,35 @@ public class KeyboardMan: NSObject {
 
     private func handleKeyboard(notification: NSNotification, _ action: KeyboardInfo.Action) {
 
-        if let userInfo = notification.userInfo {
-
-            let animationDuration: NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-            let animationCurve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedLongValue
-            let frameBegin = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
-            let frameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-
-            let currentHeight = frameEnd.height
-            let previousHeight = keyboardInfo?.height ?? 0
-            let heightIncrement = currentHeight - previousHeight
-
-            let isSameAction: Bool
-            if let previousAction = keyboardInfo?.action {
-                isSameAction = action == previousAction
-            } else {
-                isSameAction = false
-            }
-
-            keyboardInfo = KeyboardInfo(
-                animationDuration: animationDuration,
-                animationCurve: animationCurve,
-                frameBegin: frameBegin,
-                frameEnd: frameEnd,
-                heightIncrement: heightIncrement,
-                action: action,
-                isSameAction: isSameAction
-            )
+        guard let userInfo = notification.userInfo else {
+            return
         }
+
+        let animationDuration: NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        let animationCurve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedLongValue
+        let frameBegin = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
+        let frameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+
+        let currentHeight = frameEnd.height
+        let previousHeight = keyboardInfo?.height ?? 0
+        let heightIncrement = currentHeight - previousHeight
+
+        let isSameAction: Bool
+        if let previousAction = keyboardInfo?.action {
+            isSameAction = action == previousAction
+        } else {
+            isSameAction = false
+        }
+
+        keyboardInfo = KeyboardInfo(
+            animationDuration: animationDuration,
+            animationCurve: animationCurve,
+            frameBegin: frameBegin,
+            frameEnd: frameEnd,
+            heightIncrement: heightIncrement,
+            action: action,
+            isSameAction: isSameAction
+        )
     }
 
     func keyboardWillShow(notification: NSNotification) {
@@ -163,11 +168,8 @@ public class KeyboardMan: NSObject {
             return
         }
 
-        if let keyboardInfo = keyboardInfo {
-
-            if keyboardInfo.action == .Show {
-                handleKeyboard(notification, .Show)
-            }
+        if let keyboardInfo = keyboardInfo where keyboardInfo.action == .Show {
+            handleKeyboard(notification, .Show)
         }
     }
 
