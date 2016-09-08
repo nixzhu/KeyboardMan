@@ -12,37 +12,13 @@
 		50FA9A021B63AEF0009BF2A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50FA9A001B63AEF0009BF2A0 /* Main.storyboard */; };
 		50FA9A041B63AEF0009BF2A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50FA9A031B63AEF0009BF2A0 /* Images.xcassets */; };
 		50FA9A071B63AEF0009BF2A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50FA9A051B63AEF0009BF2A0 /* LaunchScreen.xib */; };
-		50FA9A131B63AEF0009BF2A0 /* MessagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FA9A121B63AEF0009BF2A0 /* MessagesTests.swift */; };
 		50FA9A261B63AF69009BF2A0 /* KeyboardMan.h in Headers */ = {isa = PBXBuildFile; fileRef = 50FA9A251B63AF69009BF2A0 /* KeyboardMan.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		50FA9A2C1B63AF69009BF2A0 /* KeyboardMan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50FA9A211B63AF69009BF2A0 /* KeyboardMan.framework */; };
-		50FA9A351B63AF69009BF2A0 /* KeyboardManTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FA9A341B63AF69009BF2A0 /* KeyboardManTests.swift */; };
 		50FA9A381B63AF69009BF2A0 /* KeyboardMan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50FA9A211B63AF69009BF2A0 /* KeyboardMan.framework */; };
 		50FA9A391B63AF69009BF2A0 /* KeyboardMan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50FA9A211B63AF69009BF2A0 /* KeyboardMan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50FA9A421B63AFA5009BF2A0 /* KeyboardMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FA9A411B63AFA4009BF2A0 /* KeyboardMan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		50FA9A0D1B63AEF0009BF2A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50FA99EF1B63AEF0009BF2A0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 50FA99F61B63AEF0009BF2A0;
-			remoteInfo = Messages;
-		};
-		50FA9A2D1B63AF69009BF2A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50FA99EF1B63AEF0009BF2A0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 50FA9A201B63AF69009BF2A0;
-			remoteInfo = KeyboardMan;
-		};
-		50FA9A2F1B63AF69009BF2A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50FA99EF1B63AEF0009BF2A0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 50FA99F61B63AEF0009BF2A0;
-			remoteInfo = Messages;
-		};
 		50FA9A361B63AF69009BF2A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50FA99EF1B63AEF0009BF2A0 /* Project object */;
@@ -74,15 +50,9 @@
 		50FA9A011B63AEF0009BF2A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50FA9A031B63AEF0009BF2A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		50FA9A061B63AEF0009BF2A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		50FA9A0C1B63AEF0009BF2A0 /* MessagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50FA9A111B63AEF0009BF2A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50FA9A121B63AEF0009BF2A0 /* MessagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTests.swift; sourceTree = "<group>"; };
 		50FA9A211B63AF69009BF2A0 /* KeyboardMan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyboardMan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FA9A241B63AF69009BF2A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50FA9A251B63AF69009BF2A0 /* KeyboardMan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardMan.h; sourceTree = "<group>"; };
-		50FA9A2B1B63AF69009BF2A0 /* KeyboardManTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardManTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50FA9A331B63AF69009BF2A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50FA9A341B63AF69009BF2A0 /* KeyboardManTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManTests.swift; sourceTree = "<group>"; };
 		50FA9A411B63AFA4009BF2A0 /* KeyboardMan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardMan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,25 +65,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50FA9A091B63AEF0009BF2A0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		50FA9A1D1B63AF69009BF2A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		50FA9A281B63AF69009BF2A0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50FA9A2C1B63AF69009BF2A0 /* KeyboardMan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,9 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				50FA99F91B63AEF0009BF2A0 /* Messages */,
-				50FA9A0F1B63AEF0009BF2A0 /* MessagesTests */,
 				50FA9A221B63AF69009BF2A0 /* KeyboardMan */,
-				50FA9A311B63AF69009BF2A0 /* KeyboardManTests */,
 				50FA99F81B63AEF0009BF2A0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,9 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				50FA99F71B63AEF0009BF2A0 /* Messages.app */,
-				50FA9A0C1B63AEF0009BF2A0 /* MessagesTests.xctest */,
 				50FA9A211B63AF69009BF2A0 /* KeyboardMan.framework */,
-				50FA9A2B1B63AF69009BF2A0 /* KeyboardManTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,23 +114,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		50FA9A0F1B63AEF0009BF2A0 /* MessagesTests */ = {
-			isa = PBXGroup;
-			children = (
-				50FA9A121B63AEF0009BF2A0 /* MessagesTests.swift */,
-				50FA9A101B63AEF0009BF2A0 /* Supporting Files */,
-			);
-			path = MessagesTests;
-			sourceTree = "<group>";
-		};
-		50FA9A101B63AEF0009BF2A0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				50FA9A111B63AEF0009BF2A0 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		50FA9A221B63AF69009BF2A0 /* KeyboardMan */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,23 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				50FA9A241B63AF69009BF2A0 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		50FA9A311B63AF69009BF2A0 /* KeyboardManTests */ = {
-			isa = PBXGroup;
-			children = (
-				50FA9A341B63AF69009BF2A0 /* KeyboardManTests.swift */,
-				50FA9A321B63AF69009BF2A0 /* Supporting Files */,
-			);
-			path = KeyboardManTests;
-			sourceTree = "<group>";
-		};
-		50FA9A321B63AF69009BF2A0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				50FA9A331B63AF69009BF2A0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -248,24 +165,6 @@
 			productReference = 50FA99F71B63AEF0009BF2A0 /* Messages.app */;
 			productType = "com.apple.product-type.application";
 		};
-		50FA9A0B1B63AEF0009BF2A0 /* MessagesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 50FA9A191B63AEF0009BF2A0 /* Build configuration list for PBXNativeTarget "MessagesTests" */;
-			buildPhases = (
-				50FA9A081B63AEF0009BF2A0 /* Sources */,
-				50FA9A091B63AEF0009BF2A0 /* Frameworks */,
-				50FA9A0A1B63AEF0009BF2A0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				50FA9A0E1B63AEF0009BF2A0 /* PBXTargetDependency */,
-			);
-			name = MessagesTests;
-			productName = MessagesTests;
-			productReference = 50FA9A0C1B63AEF0009BF2A0 /* MessagesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		50FA9A201B63AF69009BF2A0 /* KeyboardMan */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50FA9A3E1B63AF69009BF2A0 /* Build configuration list for PBXNativeTarget "KeyboardMan" */;
@@ -284,25 +183,6 @@
 			productReference = 50FA9A211B63AF69009BF2A0 /* KeyboardMan.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		50FA9A2A1B63AF69009BF2A0 /* KeyboardManTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 50FA9A401B63AF69009BF2A0 /* Build configuration list for PBXNativeTarget "KeyboardManTests" */;
-			buildPhases = (
-				50FA9A271B63AF69009BF2A0 /* Sources */,
-				50FA9A281B63AF69009BF2A0 /* Frameworks */,
-				50FA9A291B63AF69009BF2A0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				50FA9A2E1B63AF69009BF2A0 /* PBXTargetDependency */,
-				50FA9A301B63AF69009BF2A0 /* PBXTargetDependency */,
-			);
-			name = KeyboardManTests;
-			productName = KeyboardManTests;
-			productReference = 50FA9A2B1B63AF69009BF2A0 /* KeyboardManTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -318,19 +198,9 @@
 						CreatedOnToolsVersion = 6.4;
 						LastSwiftMigration = 0800;
 					};
-					50FA9A0B1B63AEF0009BF2A0 = {
-						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 0800;
-						TestTargetID = 50FA99F61B63AEF0009BF2A0;
-					};
 					50FA9A201B63AF69009BF2A0 = {
 						CreatedOnToolsVersion = 6.4;
 						LastSwiftMigration = 0800;
-					};
-					50FA9A2A1B63AF69009BF2A0 = {
-						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 0800;
-						TestTargetID = 50FA99F61B63AEF0009BF2A0;
 					};
 				};
 			};
@@ -348,9 +218,7 @@
 			projectRoot = "";
 			targets = (
 				50FA99F61B63AEF0009BF2A0 /* Messages */,
-				50FA9A0B1B63AEF0009BF2A0 /* MessagesTests */,
 				50FA9A201B63AF69009BF2A0 /* KeyboardMan */,
-				50FA9A2A1B63AF69009BF2A0 /* KeyboardManTests */,
 			);
 		};
 /* End PBXProject section */
@@ -366,21 +234,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50FA9A0A1B63AEF0009BF2A0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		50FA9A1F1B63AF69009BF2A0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		50FA9A291B63AF69009BF2A0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -399,14 +253,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50FA9A081B63AEF0009BF2A0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50FA9A131B63AEF0009BF2A0 /* MessagesTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		50FA9A1C1B63AF69009BF2A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,32 +261,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50FA9A271B63AF69009BF2A0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50FA9A351B63AF69009BF2A0 /* KeyboardManTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		50FA9A0E1B63AEF0009BF2A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 50FA99F61B63AEF0009BF2A0 /* Messages */;
-			targetProxy = 50FA9A0D1B63AEF0009BF2A0 /* PBXContainerItemProxy */;
-		};
-		50FA9A2E1B63AF69009BF2A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 50FA9A201B63AF69009BF2A0 /* KeyboardMan */;
-			targetProxy = 50FA9A2D1B63AF69009BF2A0 /* PBXContainerItemProxy */;
-		};
-		50FA9A301B63AF69009BF2A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 50FA99F61B63AEF0009BF2A0 /* Messages */;
-			targetProxy = 50FA9A2F1B63AF69009BF2A0 /* PBXContainerItemProxy */;
-		};
 		50FA9A371B63AF69009BF2A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 50FA9A201B63AF69009BF2A0 /* KeyboardMan */;
@@ -581,38 +404,6 @@
 			};
 			name = Release;
 		};
-		50FA9A1A1B63AEF0009BF2A0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MessagesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nixWork.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Messages.app/Messages";
-			};
-			name = Debug;
-		};
-		50FA9A1B1B63AEF0009BF2A0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "";
-				INFOPLIST_FILE = MessagesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nixWork.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Messages.app/Messages";
-			};
-			name = Release;
-		};
 		50FA9A3A1B63AF69009BF2A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -664,38 +455,6 @@
 			};
 			name = Release;
 		};
-		50FA9A3C1B63AF69009BF2A0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KeyboardManTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nixWork.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Messages.app/Messages";
-			};
-			name = Debug;
-		};
-		50FA9A3D1B63AF69009BF2A0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "";
-				INFOPLIST_FILE = KeyboardManTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nixWork.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Messages.app/Messages";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -717,29 +476,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		50FA9A191B63AEF0009BF2A0 /* Build configuration list for PBXNativeTarget "MessagesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				50FA9A1A1B63AEF0009BF2A0 /* Debug */,
-				50FA9A1B1B63AEF0009BF2A0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		50FA9A3E1B63AF69009BF2A0 /* Build configuration list for PBXNativeTarget "KeyboardMan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50FA9A3A1B63AF69009BF2A0 /* Debug */,
 				50FA9A3B1B63AF69009BF2A0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		50FA9A401B63AF69009BF2A0 /* Build configuration list for PBXNativeTarget "KeyboardManTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				50FA9A3C1B63AF69009BF2A0 /* Debug */,
-				50FA9A3D1B63AF69009BF2A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
