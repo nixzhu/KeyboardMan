@@ -11,7 +11,7 @@ But KeyboardMan will make it simple & easy.
 
 ## Requirements
 
-Swift 2.2, iOS 8.0
+Swift 2.3, iOS 8.0
 
 ## Example
 
@@ -72,13 +72,13 @@ Feel free to drag `KeyboardMan.swift` to your iOS Project. But it's recommended 
 ### CocoaPods
 
 ```ruby
-pod 'KeyboardMan', '~> 0.6.1'
+pod 'KeyboardMan', '~> 0.7.0'
 ```
 
 ### Carthage
 
 ```ogdl
-github "nixzhu/KeyboardMan" >= 0.6.1
+github "nixzhu/KeyboardMan" >= 0.7.0
 ```
 
 ## Contact
