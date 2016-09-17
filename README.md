@@ -13,6 +13,8 @@ But KeyboardMan will make it simple & easy.
 
 Swift 3.0, iOS 8.0
 
+(Swift 2.3, use version 0.7.0)
+
 ## Example
 
 ```swift

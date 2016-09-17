@@ -156,7 +156,6 @@ class ViewController: UIViewController {
 
         textField.text = ""
     }
-
 }
 
 // MARK: - Bar heights
