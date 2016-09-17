@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 
         tableView.rowHeight = 60
         tableView.contentInset.bottom = toolBar.frame.height
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.tableFooterView = UIView()
 
         keyboardMan.animateWhenKeyboardAppear = { [weak self] appearPostIndex, keyboardHeight, keyboardHeightIncrement in
@@ -65,9 +65,9 @@ class ViewController: UIViewController {
         keyboardMan.postKeyboardInfo = { keyboardMan, keyboardInfo in
 
             switch keyboardInfo.action {
-            case .Show:
+            case .show:
                 print("show \(keyboardMan.appearPostIndex), \(keyboardInfo.height), \(keyboardInfo.heightIncrement)\n")
-            case .Hide:
+            case .hide:
                 print("hide \(keyboardInfo.height)\n")
             }
 
@@ -131,8 +131,8 @@ class ViewController: UIViewController {
 
         // insert new row
 
-        let indexPath = NSIndexPath(forRow: messages.count - 1, inSection: 0)
-        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        let indexPath = IndexPath(row: messages.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .fade)
 
         // scroll up a little bit if need
 
@@ -147,7 +147,7 @@ class ViewController: UIViewController {
             let contentOffsetYIncrement = hiddenHeight > 0 ? newMessageHeight : hiddenHeight + newMessageHeight
             print("contentOffsetYIncrement: \(contentOffsetYIncrement)\n")
 
-            UIView.animateWithDuration(0.2) {
+            UIView.animate(withDuration: 0.2) {
                 self.tableView.contentOffset.y += contentOffsetYIncrement
             }
         }
@@ -166,7 +166,7 @@ extension UIViewController {
     var statusBarHeight: CGFloat {
 
         if let window = view.window {
-            let statusBarFrame = window.convertRect(UIApplication.sharedApplication().statusBarFrame, toView: view)
+            let statusBarFrame = window.convert(UIApplication.shared.statusBarFrame, to: view)
             return statusBarFrame.height
 
         } else {
@@ -189,9 +189,9 @@ extension UIViewController {
 
 extension ViewController: UITextFieldDelegate {
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
-        sendMessage(textField)
+        sendMessage(textField: textField)
 
         return true
     }
@@ -201,19 +201,19 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return messages.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID)!
 
         let message = messages[indexPath.row]
         cell.textLabel?.text = "\(indexPath.row + 1): " + message
@@ -221,9 +221,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
         textField.resignFirstResponder()
     }
