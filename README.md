@@ -5,13 +5,13 @@
 
 # KeyboardMan
 
-We may need keyboard infomation from keyboard notification to do animation. However, the approach is complicated and easy to make mistakes. 
+We may need keyboard infomation from keyboard notifications to do animation. However, the approach is complicated and easy to make mistakes. Even more, we need to handle the bug of system fire keyboard notifications.
 
 But KeyboardMan will make it simple & easy.
 
 ## Requirements
 
-Swift 2.3, iOS 8.0
+Swift 3.0, iOS 8.0
 
 ## Example
 
@@ -72,13 +72,13 @@ Feel free to drag `KeyboardMan.swift` to your iOS Project. But it's recommended 
 ### CocoaPods
 
 ```ruby
-pod 'KeyboardMan', '~> 0.7.0'
+pod 'KeyboardMan', '~> 1.0.0'
 ```
 
 ### Carthage
 
 ```ogdl
-github "nixzhu/KeyboardMan" >= 0.7.0
+github "nixzhu/KeyboardMan" >= 1.0.0
 ```
 
 ## Contact
