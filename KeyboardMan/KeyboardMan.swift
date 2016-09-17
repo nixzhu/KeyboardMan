@@ -21,7 +21,7 @@ open class KeyboardMan: NSObject {
         }
     }
 
-    open var keyboardObserveEnabled = false {
+    public var keyboardObserveEnabled = false {
         willSet {
             if newValue != keyboardObserveEnabled {
                 keyboardObserver = newValue ? NotificationCenter.default : nil
@@ -54,9 +54,9 @@ open class KeyboardMan: NSObject {
         let isSameAction: Bool
     }
 
-    open fileprivate(set) var appearPostIndex = 0
+    public fileprivate(set) var appearPostIndex = 0
 
-    open fileprivate(set) var keyboardInfo: KeyboardInfo? {
+    public fileprivate(set) var keyboardInfo: KeyboardInfo? {
         willSet {
             guard UIApplication.shared.applicationState != .background else {
                 return
@@ -100,19 +100,19 @@ open class KeyboardMan: NSObject {
         }
     }
 
-    open var animateWhenKeyboardAppear: ((_ appearPostIndex: Int, _ keyboardHeight: CGFloat, _ keyboardHeightIncrement: CGFloat) -> Void)? {
+    public var animateWhenKeyboardAppear: ((_ appearPostIndex: Int, _ keyboardHeight: CGFloat, _ keyboardHeightIncrement: CGFloat) -> Void)? {
         didSet {
             keyboardObserveEnabled = true
         }
     }
 
-    open var animateWhenKeyboardDisappear: ((_ keyboardHeight: CGFloat) -> Void)? {
+    public var animateWhenKeyboardDisappear: ((_ keyboardHeight: CGFloat) -> Void)? {
         didSet {
             keyboardObserveEnabled = true
         }
     }
 
-    open var postKeyboardInfo: ((_ keyboardMan: KeyboardMan, _ keyboardInfo: KeyboardInfo) -> Void)? {
+    public var postKeyboardInfo: ((_ keyboardMan: KeyboardMan, _ keyboardInfo: KeyboardInfo) -> Void)? {
         didSet {
             keyboardObserveEnabled = true
         }
