@@ -69,7 +69,7 @@ Check the demo for more information.
 
 ## Installation
 
-Feel free to drag `KeyboardMan.swift` to your iOS Project. But it's recommended to use CocoaPods or Carthage.
+Feel free to drag `KeyboardMan.swift` to your iOS Project. But it's recommended to use Carthage (or CocoaPods).
 
 ### Carthage
 
