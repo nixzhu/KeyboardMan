@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class KeyboardMan: NSObject {
+final public class KeyboardMan {
 
     var keyboardObserver: NotificationCenter? {
         didSet {
@@ -34,6 +34,9 @@ open class KeyboardMan: NSObject {
         NotificationCenter.default.removeObserver(self)
     }
 
+    public init() {
+    }
+
     public struct KeyboardInfo {
 
         public let animationDuration: TimeInterval
@@ -54,9 +57,9 @@ open class KeyboardMan: NSObject {
         let isSameAction: Bool
     }
 
-    public fileprivate(set) var appearPostIndex = 0
+    public private(set) var appearPostIndex = 0
 
-    public fileprivate(set) var keyboardInfo: KeyboardInfo? {
+    public private(set) var keyboardInfo: KeyboardInfo? {
         willSet {
             guard UIApplication.shared.applicationState != .background else {
                 return
@@ -120,7 +123,7 @@ open class KeyboardMan: NSObject {
 
     // MARK: - Actions
 
-    fileprivate func handleKeyboard(_ notification: Notification, _ action: KeyboardInfo.Action) {
+    private func handleKeyboard(_ notification: Notification, _ action: KeyboardInfo.Action) {
 
         guard let userInfo = notification.userInfo else {
             return
@@ -153,7 +156,7 @@ open class KeyboardMan: NSObject {
         )
     }
 
-    func keyboardWillShow(_ notification: Notification) {
+    @objc private func keyboardWillShow(_ notification: Notification) {
 
         guard UIApplication.shared.applicationState != .background else {
             return
@@ -162,7 +165,7 @@ open class KeyboardMan: NSObject {
         handleKeyboard(notification, .show)
     }
     
-    func keyboardWillChangeFrame(_ notification: Notification) {
+    @objc private func keyboardWillChangeFrame(_ notification: Notification) {
 
         guard UIApplication.shared.applicationState != .background else {
             return
@@ -173,7 +176,7 @@ open class KeyboardMan: NSObject {
         }
     }
 
-    func keyboardWillHide(_ notification: Notification) {
+    @objc private func keyboardWillHide(_ notification: Notification) {
 
         guard UIApplication.shared.applicationState != .background else {
             return
@@ -182,7 +185,7 @@ open class KeyboardMan: NSObject {
         handleKeyboard(notification, .hide)
     }
 
-    func keyboardDidHide(_ notification: Notification) {
+    @objc private func keyboardDidHide(_ notification: Notification) {
 
         guard UIApplication.shared.applicationState != .background else {
             return
