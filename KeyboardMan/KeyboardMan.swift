@@ -122,7 +122,7 @@ open class KeyboardMan: NSObject {
 
     fileprivate func handleKeyboard(_ notification: Notification, _ action: KeyboardInfo.Action) {
 
-        guard let userInfo = (notification as NSNotification).userInfo else {
+        guard let userInfo = notification.userInfo else {
             return
         }
 
@@ -137,7 +137,7 @@ open class KeyboardMan: NSObject {
 
         let isSameAction: Bool
         if let previousAction = keyboardInfo?.action {
-            isSameAction = action == previousAction
+            isSameAction = (action == previousAction)
         } else {
             isSameAction = false
         }
@@ -168,7 +168,7 @@ open class KeyboardMan: NSObject {
             return
         }
 
-        if let keyboardInfo = keyboardInfo , keyboardInfo.action == .show {
+        if let keyboardInfo = keyboardInfo, keyboardInfo.action == .show {
             handleKeyboard(notification, .show)
         }
     }

@@ -76,15 +76,15 @@ class ViewController: UIViewController {
 
                 let duration = keyboardInfo.animationDuration
                 let curve = keyboardInfo.animationCurve
-                let options = UIViewAnimationOptions(rawValue: curve << 16 | UIViewAnimationOptions.BeginFromCurrentState.rawValue)
+                let options = UIViewAnimationOptions(rawValue: curve << 16 | UIViewAnimationOptions.beginFromCurrentState.rawValue)
 
                 switch keyboardInfo.action {
 
-                case .Show:
+                case .show:
 
                     print("show \(keyboardMan.appearPostIndex), \(keyboardInfo.height), \(keyboardInfo.heightIncrement)\n")
 
-                    UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
+                    UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
 
                         strongSelf.tableView.contentOffset.y += keyboardInfo.heightIncrement
                         strongSelf.tableView.contentInset.bottom = keyboardInfo.height + strongSelf.toolBar.frame.height
@@ -94,11 +94,11 @@ class ViewController: UIViewController {
 
                     }, completion: nil)
 
-                case .Hide:
+                case .hide:
 
                     print("hide \(keyboardInfo.height)\n")
 
-                    UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
+                    UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
 
                         strongSelf.tableView.contentOffset.y -= keyboardInfo.height
                         strongSelf.tableView.contentInset.bottom = strongSelf.toolBar.frame.height
@@ -109,7 +109,7 @@ class ViewController: UIViewController {
                     }, completion: nil)
                 }
             }
-            */
+             */
         }
     }
 
@@ -147,8 +147,8 @@ class ViewController: UIViewController {
             let contentOffsetYIncrement = hiddenHeight > 0 ? newMessageHeight : hiddenHeight + newMessageHeight
             print("contentOffsetYIncrement: \(contentOffsetYIncrement)\n")
 
-            UIView.animate(withDuration: 0.2) {
-                self.tableView.contentOffset.y += contentOffsetYIncrement
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                self?.tableView.contentOffset.y += contentOffsetYIncrement
             }
         }
 
