@@ -200,6 +200,10 @@ extension UIApplication {
     static let sharedOrNil: UIApplication? = {
         let selector = NSSelectorFromString("sharedApplication")
         guard UIApplication.responds(to: selector) else { return nil }
-        return UIApplication.perform(selector).takeUnretainedValue() as? UIApplication
+        let application = UIApplication.perform(selector).takeUnretainedValue() as? UIApplication
+        
+        // The appDelegate is nil, normally it is in app extension context.  
+        guard let _ = application?.delegate else { return nil }
+        return application
     }()
 }
