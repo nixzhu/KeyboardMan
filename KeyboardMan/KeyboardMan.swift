@@ -61,7 +61,7 @@ final public class KeyboardMan {
 
     public private(set) var keyboardInfo: KeyboardInfo? {
         willSet {
-            guard UIApplication.shared.applicationState != .background else {
+            guard UIApplication.sharedOrNil?.applicationState != .background else {
                 return
             }
 
@@ -158,7 +158,7 @@ final public class KeyboardMan {
 
     @objc private func keyboardWillShow(_ notification: Notification) {
 
-        guard UIApplication.shared.applicationState != .background else {
+        guard UIApplication.sharedOrNil?.applicationState != .background else {
             return
         }
 
@@ -167,7 +167,7 @@ final public class KeyboardMan {
     
     @objc private func keyboardWillChangeFrame(_ notification: Notification) {
 
-        guard UIApplication.shared.applicationState != .background else {
+        guard UIApplication.sharedOrNil?.applicationState != .background else {
             return
         }
 
@@ -178,7 +178,7 @@ final public class KeyboardMan {
 
     @objc private func keyboardWillHide(_ notification: Notification) {
 
-        guard UIApplication.shared.applicationState != .background else {
+        guard UIApplication.sharedOrNil?.applicationState != .background else {
             return
         }
 
@@ -187,7 +187,7 @@ final public class KeyboardMan {
 
     @objc private func keyboardDidHide(_ notification: Notification) {
 
-        guard UIApplication.shared.applicationState != .background else {
+        guard UIApplication.sharedOrNil?.applicationState != .background else {
             return
         }
 
@@ -195,3 +195,11 @@ final public class KeyboardMan {
     }
 }
 
+extension UIApplication {
+    // Return UIApplication.shared in an app target, `nil` in an app extension target.
+    static let sharedOrNil: UIApplication? = {
+        let selector = NSSelectorFromString("sharedApplication")
+        guard UIApplication.responds(to: selector) else { return nil }
+        return UIApplication.perform(selector).takeUnretainedValue() as? UIApplication
+    }()
+}
