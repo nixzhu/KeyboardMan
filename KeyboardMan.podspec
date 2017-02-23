@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
 
   s.name        = "KeyboardMan"
-  s.version     = "1.0.0"
-  s.summary     = "KeyboardMan helps you make keyboard animation."
+  s.version     = "1.1.0"
+  s.summary     = "KeyboardMan helps you do keyboard animation."
 
   s.description = <<-DESC
                    We may need keyboard infomation from keyboard notification to do animation.
