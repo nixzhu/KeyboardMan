@@ -56,9 +56,9 @@ final public class KeyboardMan {
     public private(set) var appearPostIndex = 0
 
     public private(set) var keyboardInfo: KeyboardInfo? {
-        willSet {
+        didSet {
             guard UIApplication.isNotInBackground else { return }
-            guard let info = newValue else { return }
+            guard let info = keyboardInfo else { return }
             if !info.isSameAction || info.heightIncrement != 0 {
                 // do convenient animation
                 let duration = info.animationDuration
