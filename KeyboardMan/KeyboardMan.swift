@@ -63,7 +63,7 @@ final public class KeyboardMan {
                 // do convenient animation
                 let duration = info.animationDuration
                 let curve = info.animationCurve
-                let options = UIViewAnimationOptions(rawValue: curve << 16 | UIViewAnimationOptions.beginFromCurrentState.rawValue)
+                let options = UIViewAnimationOptions(rawValue: curve << 16 | UIViewAnimationOptions.beginFromCurrentState.rawValue | UIViewAnimationOptions.allowUserInteraction.rawValue)
                 UIView.animate(withDuration: duration, delay: 0, options: options, animations: { [weak self] in
                     guard let strongSelf = self else { return }
                     switch info.action {
