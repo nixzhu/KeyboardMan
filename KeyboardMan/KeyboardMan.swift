@@ -65,14 +65,14 @@ final public class KeyboardMan {
                 let curve = info.animationCurve
                 let options = UIView.AnimationOptions(rawValue: curve << 16 | UIView.AnimationOptions.beginFromCurrentState.rawValue | UIView.AnimationOptions.allowUserInteraction.rawValue)
                 UIView.animate(withDuration: duration, delay: 0, options: options, animations: { [weak self] in
-                    guard let strongSelf = self else { return }
+                    guard let self = self else { return }
                     switch info.action {
                     case .show:
-                        strongSelf.animateWhenKeyboardAppear?(strongSelf.appearPostIndex, info.height, info.heightIncrement)
-                        strongSelf.appearPostIndex += 1
+                        self.animateWhenKeyboardAppear?(self.appearPostIndex, info.height, info.heightIncrement)
+                        self.appearPostIndex += 1
                     case .hide:
-                        strongSelf.animateWhenKeyboardDisappear?(info.height)
-                        strongSelf.appearPostIndex = 0
+                        self.animateWhenKeyboardDisappear?(info.height)
+                        self.appearPostIndex = 0
                     }
                 }, completion: nil)
                 // post full info
