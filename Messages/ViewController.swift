@@ -38,13 +38,13 @@ class ViewController: UIViewController {
 
             print("appear \(appearPostIndex), \(keyboardHeight), \(keyboardHeightIncrement)\n")
 
-            if let strongSelf = self {
+            if let self = self {
 
-                strongSelf.tableView.contentOffset.y += keyboardHeightIncrement
-                strongSelf.tableView.contentInset.bottom = keyboardHeight + strongSelf.toolBar.frame.height
+                self.tableView.contentOffset.y += keyboardHeightIncrement
+                self.tableView.contentInset.bottom = keyboardHeight + self.toolBar.frame.height
 
-                strongSelf.toolBarBottomConstraint.constant = keyboardHeight
-                strongSelf.view.layoutIfNeeded()
+                self.toolBarBottomConstraint.constant = keyboardHeight
+                self.view.layoutIfNeeded()
             }
         }
 
@@ -52,13 +52,13 @@ class ViewController: UIViewController {
 
             print("disappear \(keyboardHeight)\n")
 
-            if let strongSelf = self {
+            if let self = self {
 
-                strongSelf.tableView.contentOffset.y -= keyboardHeight
-                strongSelf.tableView.contentInset.bottom = strongSelf.toolBar.frame.height
+                self.tableView.contentOffset.y -= keyboardHeight
+                self.tableView.contentInset.bottom = self.toolBar.frame.height
 
-                strongSelf.toolBarBottomConstraint.constant = 0
-                strongSelf.view.layoutIfNeeded()
+                self.toolBarBottomConstraint.constant = 0
+                self.view.layoutIfNeeded()
             }
         }
 
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
             }
 
             /*
-            if let strongSelf = self {
+            if let self = self {
 
                 let duration = keyboardInfo.animationDuration
                 let curve = keyboardInfo.animationCurve
@@ -86,11 +86,11 @@ class ViewController: UIViewController {
 
                     UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
 
-                        strongSelf.tableView.contentOffset.y += keyboardInfo.heightIncrement
-                        strongSelf.tableView.contentInset.bottom = keyboardInfo.height + strongSelf.toolBar.frame.height
+                        self.tableView.contentOffset.y += keyboardInfo.heightIncrement
+                        self.tableView.contentInset.bottom = keyboardInfo.height + self.toolBar.frame.height
 
-                        strongSelf.toolBarBottomConstraint.constant = keyboardInfo.height
-                        strongSelf.view.layoutIfNeeded()
+                        self.toolBarBottomConstraint.constant = keyboardInfo.height
+                        self.view.layoutIfNeeded()
 
                     }, completion: nil)
 
@@ -100,11 +100,11 @@ class ViewController: UIViewController {
 
                     UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
 
-                        strongSelf.tableView.contentOffset.y -= keyboardInfo.height
-                        strongSelf.tableView.contentInset.bottom = strongSelf.toolBar.frame.height
+                        self.tableView.contentOffset.y -= keyboardInfo.height
+                        self.tableView.contentInset.bottom = self.toolBar.frame.height
 
-                        strongSelf.toolBarBottomConstraint.constant = 0
-                        strongSelf.view.layoutIfNeeded()
+                        self.toolBarBottomConstraint.constant = 0
+                        self.view.layoutIfNeeded()
 
                     }, completion: nil)
                 }
@@ -147,8 +147,8 @@ class ViewController: UIViewController {
             let contentOffsetYIncrement = hiddenHeight > 0 ? newMessageHeight : hiddenHeight + newMessageHeight
             print("contentOffsetYIncrement: \(contentOffsetYIncrement)\n")
 
-            UIView.animate(withDuration: 0.2) { [weak self] in
-                self?.tableView.contentOffset.y += contentOffsetYIncrement
+            UIView.animate(withDuration: 0.2) {
+                self.tableView.contentOffset.y += contentOffsetYIncrement
             }
         }
 
