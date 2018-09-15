@@ -13,10 +13,10 @@ final public class KeyboardMan {
     var keyboardObserver: NotificationCenter? {
         didSet {
             oldValue?.removeObserver(self)
-            keyboardObserver?.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-            keyboardObserver?.addObserver(self, selector: #selector(keyboardWillChangeFrame(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
-            keyboardObserver?.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
-            keyboardObserver?.addObserver(self, selector: #selector(keyboardDidHide(_:)), name: .UIKeyboardDidHide, object: nil)
+            keyboardObserver?.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            keyboardObserver?.addObserver(self, selector: #selector(keyboardWillChangeFrame(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+            keyboardObserver?.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+            keyboardObserver?.addObserver(self, selector: #selector(keyboardDidHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         }
     }
 
@@ -63,7 +63,7 @@ final public class KeyboardMan {
                 // do convenient animation
                 let duration = info.animationDuration
                 let curve = info.animationCurve
-                let options = UIViewAnimationOptions(rawValue: curve << 16 | UIViewAnimationOptions.beginFromCurrentState.rawValue | UIViewAnimationOptions.allowUserInteraction.rawValue)
+                let options = UIView.AnimationOptions(rawValue: curve << 16 | UIView.AnimationOptions.beginFromCurrentState.rawValue | UIView.AnimationOptions.allowUserInteraction.rawValue)
                 UIView.animate(withDuration: duration, delay: 0, options: options, animations: { [weak self] in
                     guard let strongSelf = self else { return }
                     switch info.action {
@@ -103,10 +103,10 @@ final public class KeyboardMan {
 
     private func handleKeyboard(_ notification: Notification, _ action: KeyboardInfo.Action) {
         guard let userInfo = notification.userInfo else { return }
-        let animationDuration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-        let animationCurve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue
-        let frameBegin = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        let frameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let animationDuration: TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        let animationCurve = (userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue
+        let frameBegin = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        let frameEnd = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let currentHeight = frameEnd.height
         let previousHeight = keyboardInfo?.height ?? 0
         let heightIncrement = currentHeight - previousHeight
