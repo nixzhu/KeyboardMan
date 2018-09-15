@@ -13,7 +13,7 @@ But KeyboardMan will make it simple & easy.
 
 ## Requirements
 
-Swift 4, iOS 8.0
+Swift 4.2, iOS 8.0
 
 (Swift 3, use version 1.1.0)
 
@@ -32,13 +32,13 @@ keyboardMan.animateWhenKeyboardAppear = { [weak self] appearPostIndex, keyboardH
 
     print("appear \(appearPostIndex), \(keyboardHeight), \(keyboardHeightIncrement)\n")
 
-    if let strongSelf = self {
+    if let self = self {
 
-        strongSelf.tableView.contentOffset.y += keyboardHeightIncrement
-        strongSelf.tableView.contentInset.bottom = keyboardHeight + strongSelf.toolBar.frame.height
+        self.tableView.contentOffset.y += keyboardHeightIncrement
+        self.tableView.contentInset.bottom = keyboardHeight + strongSelf.toolBar.frame.height
 
-        strongSelf.toolBarBottomConstraint.constant = keyboardHeight
-        strongSelf.view.layoutIfNeeded()
+        self.toolBarBottomConstraint.constant = keyboardHeight
+        self.view.layoutIfNeeded()
     }
 }
 
@@ -46,13 +46,13 @@ keyboardMan.animateWhenKeyboardDisappear = { [weak self] keyboardHeight in
 
     print("disappear \(keyboardHeight)\n")
 
-    if let strongSelf = self {
+    if let self = self {
 
-        strongSelf.tableView.contentOffset.y -= keyboardHeight
-        strongSelf.tableView.contentInset.bottom = strongSelf.toolBar.frame.height
+        self.tableView.contentOffset.y -= keyboardHeight
+        self.tableView.contentInset.bottom = strongSelf.toolBar.frame.height
 
-        strongSelf.toolBarBottomConstraint.constant = 0
-        strongSelf.view.layoutIfNeeded()
+        self.toolBarBottomConstraint.constant = 0
+        self.view.layoutIfNeeded()
     }
 }
 ```
@@ -61,7 +61,7 @@ For more specific information, you can use keyboardInfo that KeyboardMan post:
 
 ```swift
 keyboardMan.postKeyboardInfo = { [weak self] keyboardMan, keyboardInfo in
-	// TODO
+    // TODO
 }
 ```
 
