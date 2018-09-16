@@ -35,7 +35,7 @@ keyboardMan.animateWhenKeyboardAppear = { [weak self] appearPostIndex, keyboardH
     if let self = self {
 
         self.tableView.contentOffset.y += keyboardHeightIncrement
-        self.tableView.contentInset.bottom = keyboardHeight + strongSelf.toolBar.frame.height
+        self.tableView.contentInset.bottom = keyboardHeight + self.toolBar.frame.height
 
         self.toolBarBottomConstraint.constant = keyboardHeight
         self.view.layoutIfNeeded()
@@ -49,7 +49,7 @@ keyboardMan.animateWhenKeyboardDisappear = { [weak self] keyboardHeight in
     if let self = self {
 
         self.tableView.contentOffset.y -= keyboardHeight
-        self.tableView.contentInset.bottom = strongSelf.toolBar.frame.height
+        self.tableView.contentInset.bottom = self.toolBar.frame.height
 
         self.toolBarBottomConstraint.constant = 0
         self.view.layoutIfNeeded()
